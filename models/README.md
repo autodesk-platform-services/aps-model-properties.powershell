@@ -39,7 +39,7 @@ Take the, `RVT`, `DWG` and `IFC` files from the [/audubon/mixed](./audubon/mixed
 
 ### Step 4: Get the tip version URNs for the uploaded models
 
-In order to build an index you will need the URNs of the files you have just uploaded. The [ForgeCLI](../src/ForgeCLI.psd1) script module contains various cmdlets which call the Forge Data Management API. The example below shows how they can be used to get the version URNs of the files uploaded in the previous step.
+In order to build an index you will need the URNs of the files you have just uploaded. The [APSCLI](../src/APSCLI.psd1) script module contains various cmdlets which call the APS Data Management API. The example below shows how they can be used to get the version URNs of the files uploaded in the previous step.
 </br>
 </br>
 
@@ -49,11 +49,11 @@ In order to build an index you will need the URNs of the files you have just upl
 </br>
 
 ```PowerShell
-# import the ForgeCLI script module
-Import-Module "$PSScriptRoot\ForgeCLI.psd1";
+# import the APSCLI script module
+Import-Module "$PSScriptRoot\APSCLI.psd1";
 
-# OAuth forge token
-Set-ForgeToken -Token 'Your OAuth Token Here'; 
+# OAuth APS token
+Set-APSToken -Token 'Your OAuth Token Here'; 
 
 # hub and project GUID
 $hubId = [guid]('Your Account GUID here - no b. prefix!');
@@ -72,7 +72,7 @@ $paths = @(
 
 $items = $paths | %{ 
     [PSCustomObject]@{
-        Item = Get-ForgeItemByPath -HubId "b.$hubId" -ProjectId "b.$projectId" -Path $_ -Verbose
+        Item = Get-APSItemByPath -HubId "b.$hubId" -ProjectId "b.$projectId" -Path $_ -Verbose
         Path = $_
     } 
 }

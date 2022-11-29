@@ -73,7 +73,7 @@ The JSON specification for the index.
 
 ### Outputs
 
-The diff index, see the [Model Properties Forge documentation](https://forge.autodesk.com/en/docs/acc/v1/reference/http/index-v2-diff-merge-status-post/) for full details.
+The diff index, see the [Model Properties APS documentation](https://forge.autodesk.com/en/docs/acc/v1/reference/http/index-v2-diff-merge-status-post/) for full details.
 
 # <a name="Get-BimPropertyDiff"></a>Get-BimPropertyDiff
 
@@ -264,4 +264,4 @@ The Diff query ID corresponding to the executed query.
 
 ### Outputs
 
-The diff index query, see the [Model Properties Forge documentation](https://stg.forge.autodesk.com/en/docs/acc/v1/reference/http/index-v2-diff-query-job-status-get/) for full details.
+The diff index query, see the [Model Properties APS documentation](https://stg.forge.autodesk.com/en/docs/acc/v1/reference/http/index-v2-diff-query-job-status-get/) for full details.

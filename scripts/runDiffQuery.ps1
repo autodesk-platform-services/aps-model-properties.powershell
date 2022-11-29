@@ -14,15 +14,15 @@ param
     # The JSON query specification
     [Parameter(Mandatory=$true, ValueFromPipeline=$false)]
     [string] $QueryJson,       
-    # Forge auth token.
+    # APS auth token.
     [Parameter(Mandatory=$true, ValueFromPipeline=$false)]
-    [string] $ForgeToken
+    [string] $APSToken
 )
 
 #############################################################
-# Forge CLI module import
+# APS CLI module import
 #############################################################
-$modulePath = Join-Path $PSScriptRoot '..\src\ForgeCLI.psd1' -Resolve;
+$modulePath = Join-Path $PSScriptRoot '..\src\APSCLI.psd1' -Resolve;
 Import-Module $modulePath;
 
 #############################################################
@@ -37,7 +37,7 @@ $outDir = "$PSScriptRoot\out";
 
 try {
     # create the token
-    Set-ForgeToken -Token $ForgeToken;    
+    Set-APSToken -Token $APSToken;    
 
     # create the output dir if it does not exist
     if (-not(Test-Path $outDir))

@@ -2,60 +2,60 @@
 
 # Cmdlets
 
-The [ForgeCLI](../src/ForgeCLI.psd1) module contains the following Forge Data Management API cmdlets. 
+The [APSCLI](../src/APSCLI.psd1) module contains the following APS Data Management API cmdlets. 
 
-[ConvertTo-ForgeDataFilter](#ConvertTo-ForgeDataFilter)
+[ConvertTo-APSDataFilter](#ConvertTo-APSDataFilter)
 
-[Get-ForgeHubs](#Get-ForgeHubs)
+[Get-APSHubs](#Get-APSHubs)
 
-[Get-ForgeHub](#Get-ForgeHub)
+[Get-APSHub](#Get-APSHub)
 
-[Get-ForgeProjects](#Get-ForgeProjects)
+[Get-APSProjects](#Get-APSProjects)
 
-[Get-ForgeProject](#Get-ForgeProject)
+[Get-APSProject](#Get-APSProject)
 
-[Get-Get-ForgeProjectTopFolders](#Get-Get-ForgeProjectTopFolders)
+[Get-Get-APSProjectTopFolders](#Get-Get-APSProjectTopFolders)
 
-[Get-ForgeFolderContents](#Get-ForgeFolderContents)
+[Get-APSFolderContents](#Get-APSFolderContents)
 
-[Search-ForgeFolder](#Search-ForgeFolder)
+[Search-APSFolder](#Search-APSFolder)
 
-[Get-ForgeFolderByPath](#Get-ForgeFolderByPath)
+[Get-APSFolderByPath](#Get-APSFolderByPath)
 
-[Get-ForgeItemByPath](#Get-ForgeItemByPath)
+[Get-APSItemByPath](#Get-APSItemByPath)
 
-# <a name="ConvertTo-ForgeDataFilter"></a>ConvertTo-ForgeDataFilter
+# <a name="ConvertTo-APSDataFilter"></a>ConvertTo-APSDataFilter
 
 ### Syntax
 
 ```PowerShell
-ConvertTo-ForgeDataFilter
+ConvertTo-APSDataFilter
     [-Filters] <hashtable>
 ```
 
 ### Description
 
-Converts a hash table of filter values into a URL encoded Forge Data Management query parameter. For mor information see the [Forge Data Management filtering tutorial](https://forge.autodesk.com/en/docs/data/v2/developers_guide/filtering/). When using [comparison operators](https://forge.autodesk.com/en/docs/data/v2/developers_guide/filtering/#comparison-types) apply the operator in the value of the hash table filter row, see examples below.
+Converts a hash table of filter values into a URL encoded APS Data Management query parameter. For mor information see the [APS Data Management filtering tutorial](https://forge.autodesk.com/en/docs/data/v2/developers_guide/filtering/). When using [comparison operators](https://forge.autodesk.com/en/docs/data/v2/developers_guide/filtering/#comparison-types) apply the operator in the value of the hash table filter row, see examples below.
 
 ### Examples
 
 ```PowerShell
-ConvertTo-ForgeDataFilter -Filters @{ 'attributes.name' = 'foo' }
+ConvertTo-APSDataFilter -Filters @{ 'attributes.name' = 'foo' }
 ```
 
 ```PowerShell
-ConvertTo-ForgeDataFilter -Filters @{ 
+ConvertTo-APSDataFilter -Filters @{ 
     'attributes.displayName' = 'bar'
     'extension.type' = 'folders:autodesk.bim360:Folder'
 };
 ```
 
 ```PowerShell
-ConvertTo-ForgeDataFilter -Filters @{ 'attributes.name' = '-starts=cat' }
+ConvertTo-APSDataFilter -Filters @{ 'attributes.name' = '-starts=cat' }
 ```
 
 ```PowerShell
-ConvertTo-ForgeDataFilter -Filters @{ 'lastModifiedTime' = '-ge=2020' }
+ConvertTo-APSDataFilter -Filters @{ 'lastModifiedTime' = '-ge=2020' }
 ```
 
 ### Parameters
@@ -79,29 +79,29 @@ A `[PSCustomObject]` with the following properties
 | Name    | Type     | Description                                                                    |
 | ------- | -------- | ------------------------------------------------------------------------------ |
 | Clear   | `string` | A clear text, human readable version of the filter string for debug purposes   |
-| Encoded | `string` | A set of URL encoded query parameters which can be appended to Forge Data URLs |
+| Encoded | `string` | A set of URL encoded query parameters which can be appended to APS Data URLs |
 
-# <a name="Get-ForgeHubs"></a>Get-ForgeHubs
+# <a name="Get-APSHubs"></a>Get-APSHubs
 
 ### Syntax
 
 ```PowerShell
-Get-ForgeHubs
+Get-APSHubs
     [[-Filter] <hashtable>]
 ```
 
 ### Description
 
-Get a [collection of Hubs](https://forge.autodesk.com/en/docs/data/v2/reference/http/hubs-GET/) (accounts) accessible to the calling Forge user.
+Get a [collection of Hubs](https://forge.autodesk.com/en/docs/data/v2/reference/http/hubs-GET/) (accounts) accessible to the calling APS user.
 
 ### Examples
 
 ```PowerShell
-Get-ForgeHubs;
+Get-APSHubs;
 ```
 
 ```PowerShell
-Get-ForgeHubs -Filter @{ 'attributes.name' = 'foo' };
+Get-APSHubs -Filter @{ 'attributes.name' = 'foo' };
 ```
 
 ### Parameters
@@ -120,14 +120,14 @@ An optional hash table of filters to apply.
 
 ### Outputs
 
-A JSON API collection of Hubs, see the [Forge Data Management API documentation](https://forge.autodesk.com/en/docs/data/v2/reference/http/hubs-GET/) for more information.
+A JSON API collection of Hubs, see the [APS Data Management API documentation](https://forge.autodesk.com/en/docs/data/v2/reference/http/hubs-GET/) for more information.
 
-# <a name="Get-ForgeHub"></a>Get-ForgeHub
+# <a name="Get-APSHub"></a>Get-APSHub
 
 ### Syntax
 
 ```PowerShell
-Get-ForgeHub
+Get-APSHub
     [-HubId] <string>] 
 ```
 
@@ -138,7 +138,7 @@ Get a [Hub by ID](https://forge.autodesk.com/en/docs/data/v2/reference/http/hubs
 ### Examples
 
 ```PowerShell
-Get-ForgeHub -HubId 'b.f252a243-96e5-41f5-b34f-f5068a780e39';
+Get-APSHub -HubId 'b.f252a243-96e5-41f5-b34f-f5068a780e39';
 ```
 
 ### Parameters
@@ -157,39 +157,39 @@ The ID of the Hub to retrieve. BIM 360/ACC Hubs are identified by a `guid` which
 
 ### Outputs
 
-A JSON API hub, see the [Forge Data Management API documentation](https://forge.autodesk.com/en/docs/data/v2/reference/http/hubs-hub_id-GET/) for more information.
+A JSON API hub, see the [APS Data Management API documentation](https://forge.autodesk.com/en/docs/data/v2/reference/http/hubs-hub_id-GET/) for more information.
 
-# <a name="Get-ForgeProjects"></a>Get-ForgeProjects
+# <a name="Get-APSProjects"></a>Get-APSProjects
 
 ### Syntax
 
 ```PowerShell
-Get-ForgeProjects
+Get-APSProjects
     [-HubId] <string>
     [[-Filter] <hashtable>]
 ```
 
 ### Description
 
-Return a [collection of Projects](https://forge.autodesk.com/en/docs/data/v2/reference/http/hubs-hub_id-projects-GET/) accessible to the calling Forge user. The projects can [optionally filtered](https://forge.autodesk.com/en/docs/data/v2/developers_guide/filtering/).
+Return a [collection of Projects](https://forge.autodesk.com/en/docs/data/v2/reference/http/hubs-hub_id-projects-GET/) accessible to the calling APS user. The projects can [optionally filtered](https://forge.autodesk.com/en/docs/data/v2/developers_guide/filtering/).
 
 ### Examples
 
 ```PowerShell
-Get-ForgeProjects `
+Get-APSProjects `
     -HubId 'b.f252a243-96e5-41f5-b34f-f5068a780e39' `
    ;
 ```
 
 ```PowerShell
-Get-ForgeProjects `
+Get-APSProjects `
     -HubId 'b.f252a243-96e5-41f5-b34f-f5068a780e39' `
     -Filter @{ 'attributes.name' = 'foo' } `
    ;
 ```
 
 ```PowerShell
-Get-ForgeProjects `
+Get-APSProjects `
     -HubId 'b.f252a243-96e5-41f5-b34f-f5068a780e39' `
     -Filter @{ 'attributes.name' = '-starts=bar' } `
    ;
@@ -223,14 +223,14 @@ An optional hash table of filters to apply.
 
 ### Outputs
 
-A JSON API collection of Projects, see the [Forge Data Management API documentation](https://forge.autodesk.com/en/docs/data/v2/reference/http/hubs-hub_id-projects-GET/) for more information.
+A JSON API collection of Projects, see the [APS Data Management API documentation](https://forge.autodesk.com/en/docs/data/v2/reference/http/hubs-hub_id-projects-GET/) for more information.
 
-# <a name="Get-ForgeProject"></a>Get-ForgeProject
+# <a name="Get-APSProject"></a>Get-APSProject
 
 ### Syntax
 
 ```PowerShell
-Get-ForgeProjects
+Get-APSProjects
     [-HubId] <string>
     [-ProjectId] <string>
 ```
@@ -242,7 +242,7 @@ Get a Hub [Project by ID](https://forge.autodesk.com/en/docs/data/v2/reference/h
 ### Examples
 
 ```PowerShell
-Get-ForgeProject `
+Get-APSProject `
     -HubId 'b.f252a243-96e5-41f5-b34f-f5068a780e39' `
     -ProjectId 'b.f83eef12-deef-4781-9feb-af85644e3c46' `
    ;
@@ -276,14 +276,14 @@ The ID of the Project to query. BIM 360/ACC Projects are identified by a `guid` 
 
 ### Outputs
 
-A JSON API hub, see the [Forge Data Management API documentation](https://forge.autodesk.com/en/docs/data/v2/reference/http/hubs-hub_id-projects-project_id-GET/) for more information.
+A JSON API hub, see the [APS Data Management API documentation](https://forge.autodesk.com/en/docs/data/v2/reference/http/hubs-hub_id-projects-project_id-GET/) for more information.
 
-# <a name="Get-ForgeProjectTopFolders"></a>Get-ForgeProjectTopFolders
+# <a name="Get-APSProjectTopFolders"></a>Get-APSProjectTopFolders
 
 ### Syntax
 
 ```PowerShell
-Get-ForgeProjectTopFolders
+Get-APSProjectTopFolders
     [-HubId] <string>
     [-ProjectId] <string>
 ```
@@ -293,7 +293,7 @@ Get the [top (root) folders](https://forge.autodesk.com/en/docs/data/v2/referenc
 ### Examples
 
 ```PowerShell
-Get-ForgeProjectTopFolders `
+Get-APSProjectTopFolders `
     -HubId 'b.f252a243-96e5-41f5-b34f-f5068a780e39' `
     -ProjectId 'b.f83eef12-deef-4781-9feb-af85644e3c46' `
    ;
@@ -327,14 +327,14 @@ The ID of the Project to query. BIM 360/ACC Projects are identified by a `guid` 
 
 ### Outputs
 
-If this call is successful there will be a maximum of two folder in `data[]` array of the JSON API response returned by this cmdlet, see the [Forge Data Management API documentation](https://forge.autodesk.com/en/docs/data/v2/reference/http/hubs-hub_id-projects-project_id-topFolders-GET/) for more information.
+If this call is successful there will be a maximum of two folder in `data[]` array of the JSON API response returned by this cmdlet, see the [APS Data Management API documentation](https://forge.autodesk.com/en/docs/data/v2/reference/http/hubs-hub_id-projects-project_id-topFolders-GET/) for more information.
 
-# <a name="Get-ForgeFolderContents"></a>Get-ForgeFolderContents
+# <a name="Get-APSFolderContents"></a>Get-APSFolderContents
 
 ### Syntax
 
 ```PowerShell
-Get-ForgeFolderContents
+Get-APSFolderContents
     [-ProjectId] <string>
     [-FolderUrn] <string>
     [[-Filter] <hashtable>]
@@ -347,14 +347,14 @@ Get the [contents](https://forge.autodesk.com/en/docs/data/v2/reference/http/pro
 ### Examples
 
 ```PowerShell
-Get-ForgeFolderContents `
+Get-APSFolderContents `
     -ProjectId 'b.f83eef12-deef-4781-9feb-af85644e3c46' `
     -FolderUrn 'urn:adsk.wipprod:fs.folder:co.YqcE36AxRFKKie-mclpFbQ' `
    ;
 ```
 
 ```PowerShell
-Get-ForgeFolderContents `
+Get-APSFolderContents `
     -ProjectId 'b.f83eef12-deef-4781-9feb-af85644e3c46' `
     -FolderUrn 'urn:adsk.wipprod:fs.folder:co.YqcE36AxRFKKie-mclpFbQ' `
     -Filter @{ 
@@ -404,14 +404,14 @@ An optional hash table of filters to apply.
 
 ### Outputs
 
-The content of the folder, see the [Forge Data Management API documentation](https://forge.autodesk.com/en/docs/data/v2/reference/http/projects-project_id-folders-folder_id-contents-GET/) for more information.
+The content of the folder, see the [APS Data Management API documentation](https://forge.autodesk.com/en/docs/data/v2/reference/http/projects-project_id-folders-folder_id-contents-GET/) for more information.
 
-# <a name="Search-ForgeFolder"></a>Search-ForgeFolder
+# <a name="Search-APSFolder"></a>Search-APSFolder
 
 ### Syntax
 
 ```PowerShell
-Search-ForgeFolder
+Search-APSFolder
     [-ProjectId] <string>
     [-FolderUrn] <string>
     [[-Filter] <hashtable>]
@@ -424,14 +424,14 @@ perform a **recursive** [search of the Project folder tree](https://forge.autode
 ### Examples
 
 ```PowerShell
-Search-ForgeFolder `
+Search-APSFolder `
     -ProjectId 'b.f83eef12-deef-4781-9feb-af85644e3c46' `
     -FolderUrn 'urn:adsk.wipprod:fs.folder:co.YqcE36AxRFKKie-mclpFbQ' `
    ;
 ```
 
 ```PowerShell
-Search-ForgeFolder `
+Search-APSFolder `
     -ProjectId 'b.f83eef12-deef-4781-9feb-af85644e3c46' `
     -FolderUrn 'urn:adsk.wipprod:fs.folder:co.YqcE36AxRFKKie-mclpFbQ' `
     -Filter @{ 
@@ -481,14 +481,14 @@ An optional hash table of filters to apply.
 
 ### Outputs
 
-The content of the folder search, see the [Forge Data Management API documentation](https://forge.autodesk.com/en/docs/data/v2/reference/http/projects-project_id-folders-folder_id-search-GET/) for more information.
+The content of the folder search, see the [APS Data Management API documentation](https://forge.autodesk.com/en/docs/data/v2/reference/http/projects-project_id-folders-folder_id-search-GET/) for more information.
 
-# <a name="Get-ForgeFolderByPath"></a>Get-ForgeFolderByPath
+# <a name="Get-APSFolderByPath"></a>Get-APSFolderByPath
 
 ### Syntax
 
 ```PowerShell
-Get-ForgeFolderByPath `
+Get-APSFolderByPath `
     [-HubId] <System.String>
     [-ProjectId] <System.String>
     [-Path] <System.String>;
@@ -501,7 +501,7 @@ Get the Folder for the specified path.
 ### Examples
 
 ```PowerShell
-Get-ForgeFolderByPath `
+Get-APSFolderByPath `
     -HubId 'b.f252a243-96e5-41f5-b34f-f5068a780e39' `
     -ProjectId 'b.f83eef12-deef-4781-9feb-af85644e3c46' `
     -Path '//Project Files/API Testing/Index Service Audubon' `
@@ -561,12 +561,12 @@ The following folder paths are possible
 
 A JSON API response body converted to a `[PSCustomObject]` representing the Folder.
 
-# <a name="Get-ForgeItemByPath"></a>Get-ForgeItemByPath
+# <a name="Get-APSItemByPath"></a>Get-APSItemByPath
 
 ### Syntax
 
 ```PowerShell
-Get-ForgeItemByPath `
+Get-APSItemByPath `
     [-HubId] <System.String>
     [-ProjectId] <System.String>
     [-Path] <System.String>;
@@ -574,12 +574,12 @@ Get-ForgeItemByPath `
 
 ### Description
 
-Get the Forge Item (lineage) at the path specified.
+Get the APS Item (lineage) at the path specified.
 
 ### Examples
 
 ```PowerShell
-Get-ForgeItemByPath `
+Get-APSItemByPath `
     -HubId 'b.f252a243-96e5-41f5-b34f-f5068a780e39' `
     -ProjectId 'b.f83eef12-deef-4781-9feb-af85644e3c46' `
     -Path '//Project Files/API Testing/Index Service Audubon/Audubon_Structure.rvt' `

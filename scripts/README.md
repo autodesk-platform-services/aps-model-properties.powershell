@@ -4,13 +4,13 @@
 
 ### Description
 
-This script can be used to get contents of one folder in one project, in order to get URNs of the models which can be used in subsequent tests of the Model Properties API. This script calls the Forge [Data Management API](https://forge.autodesk.com/en/docs/data/v2/reference/http/). This script only returns one page of folder content. Note: project ID for Data Management API calls requires 'b.' prefix to the project GUID. 
+This script can be used to get contents of one folder in one project, in order to get URNs of the models which can be used in subsequent tests of the Model Properties API. This script calls the APS [Data Management API](https://forge.autodesk.com/en/docs/data/v2/reference/http/). This script only returns one page of folder content. Note: project ID for Data Management API calls requires 'b.' prefix to the project GUID. 
 
 ### Example
 
 ```PowerShell
 # set a token and project
-$3loToken = 'YOUR 3LO FORGE TOKEN HERE';
+$3loToken = 'YOUR 3LO APS TOKEN HERE';
 
 #Data Management API requires project id with 'b.' 
 #e.g. b.55b9a76f-ff85-4831-8bee-e2cedc10b967 
@@ -18,7 +18,7 @@ $dmProjectId = 'YOUR PROJECT GUID HERE';
 $folderUrn = 'YOUR FOLDER URN HERE'; 
 
 # extract contents of one folder, and get some model urns.
-& $PSScriptRoot\getUrns.ps1 -ProjectId $dmProjectId -FolderUrn $folderUrn -ForgeToken $3loToken;
+& $PSScriptRoot\getUrns.ps1 -ProjectId $dmProjectId -FolderUrn $folderUrn -APSToken $3loToken;
 ```
  
 ### Parameters
@@ -27,7 +27,7 @@ $folderUrn = 'YOUR FOLDER URN HERE';
 | -------------------- | -------- | -------------------------------------------------------------------- |
 | `-dmProjectId`         | `string`   | A ACC/BIM 360 project ID (with b.)  
 | `-folderUrn`         | `string`   | Urn of one folder|
-| `-ForgeToken`        | `string` | A Forge OAuth 2.0 3LO token string                                   |
+| `-APSToken`        | `string` | A APS OAuth 2.0 3LO token string                                   |
 
 ### Output
 
@@ -38,7 +38,7 @@ This script  will output the response data to **.\out\folder-contents.json**.
 
 ### Description
 
-This script can be used to create single file or batch indexes. It imports the [ForgeCLI](../src) module and wraps the `New-BimPropertyIndex` cmdlet. The `Get-BimPropertyIndex` cmdlet is used to poll the index for progress. Finally the `Get-ResourceUrl` cmdlet is used to download the fields, manifest and properties JSON resources if the `-DownloadAll` switch is set.
+This script can be used to create single file or batch indexes. It imports the [CLI](../src) module and wraps the `New-BimPropertyIndex` cmdlet. The `Get-BimPropertyIndex` cmdlet is used to poll the index for progress. Finally the `Get-ResourceUrl` cmdlet is used to download the fields, manifest and properties JSON resources if the `-DownloadAll` switch is set.
 
 In the process of [get index response](./createIndex.ps1#L47), it tells available index id array. One of which can be used for the subquent test of Query. Or you can find the index id in the file names of **out** folder.
 
@@ -47,7 +47,7 @@ In the process of [get index response](./createIndex.ps1#L47), it tells availabl
 
 ```PowerShell
 # set a token and project
-$3loToken = 'YOUR 3LO FORGE TOKEN HERE';
+$3loToken = 'YOUR 3LO APS TOKEN HERE';
 $projectId = 'YOUR PROJECT GUID HERE';
 
 # spec the index, in this case 3 files
@@ -67,7 +67,7 @@ $json =
 }';
 
 # download the manifest, fields and properties for each indexed file, to merge add the -Merge switch
-& $PSScriptRoot\createIndex.ps1 -ProjectId $projectId -SpecificationJson $json -ForgeToken $3loToken -DownloadAll;
+& $PSScriptRoot\createIndex.ps1 -ProjectId $projectId -SpecificationJson $json -APSToken $3loToken -DownloadAll;
 ```
 
 ### Parameters
@@ -76,7 +76,7 @@ $json =
 | -------------------- | -------- | -------------------------------------------------------------------- |
 | `-ProjectId`         | `guid`   | A ACC/BIM 360 project GUID                                           |
 | `-SpecificationJson` | `string` | The JSON specification for the index                                 |
-| `-ForgeToken`        | `string` | A Forge OAuth 2.0 3LO token string                                   |
+| `-APSToken`        | `string` | A APS OAuth 2.0 3LO token string                                   |
 | `-DownloadAll`       | `switch` | Set to download all resources for index                              |
 
 ### Output
@@ -87,13 +87,13 @@ This script will download the response from the [index status get endpoint](http
 
 ### Description
 
-This script can be used to create an run property breakdown queries against an existing index. This script imports the [ForgeCLI](../src) module and wraps the `New-BimPropertyIndexQuery` cmdlet. The `Get-BimPropertyIndexQuery` cmdlet is used to poll the index for progress. Finally the `Get-ResourceUrl` cmdlet is used to download the result JSON resource. For a detailed explanation of index building and querying see the [indexing and querying by example guide which accompanies this repo](../doc/README.md).
+This script can be used to create an run property breakdown queries against an existing index. This script imports the [APSCLI](../src) module and wraps the `New-BimPropertyIndexQuery` cmdlet. The `Get-BimPropertyIndexQuery` cmdlet is used to poll the index for progress. Finally the `Get-ResourceUrl` cmdlet is used to download the result JSON resource. For a detailed explanation of index building and querying see the [indexing and querying by example guide which accompanies this repo](../doc/README.md).
 
 ### Example
 
 ```PowerShell
 # set a token, project and index ID to query
-$3loToken = 'YOUR 3LO FORGE TOKEN HERE';
+$3loToken = 'YOUR 3LO APS TOKEN HERE';
 $projectId = 'YOUR PROJECT GUID HERE';
 $indexId = 'THE INDEX ID TO TARGET';
 
@@ -107,7 +107,7 @@ $json =
 }';
 
 
-& $PSScriptRoot\runIndexQuery.ps1 -ProjectId $projectId -IndexId $indexId -QueryJson $json -ForgeToken $3loToken;
+& $PSScriptRoot\runIndexQuery.ps1 -ProjectId $projectId -IndexId $indexId -QueryJson $json -APSToken $3loToken;
 ``` 
 
 
@@ -118,7 +118,7 @@ $json =
 | `-ProjectId`  | `guid`   | A ACC/BIM 360 project GUID            |
 | `-IndexId`    | `string` | An index ID to target with the query  |
 | `-QueryJson`  | `string` | The JSON query specification          |
-| `-ForgeToken` | `string` | A Forge OAuth 2.0 3LO token string    |
+| `-APSToken` | `string` | A APS OAuth 2.0 3LO token string    |
 
 ### Output
 
@@ -129,13 +129,13 @@ This script will write the response from the [index query status get endpoint](h
 
 ### Description
 
-This script can be used to create single file and merged diff indexes. This script imports the [ForgeCLI](../src) module and wraps the `New-BimPropertyDiff` cmdlet. The `Get-BimPropertyDiff` cmdlet is used to poll the index for progress. Finally the `Get-ResourceUrl` cmdlet is used to download the fields, manifest and properties JSON resources if the `-DownloadAll` switch is set. To create a merge model simply supply the `-Merge` switch.
+This script can be used to create single file and merged diff indexes. This script imports the [APSCLI](../src) module and wraps the `New-BimPropertyDiff` cmdlet. The `Get-BimPropertyDiff` cmdlet is used to poll the index for progress. Finally the `Get-ResourceUrl` cmdlet is used to download the fields, manifest and properties JSON resources if the `-DownloadAll` switch is set. To create a merge model simply supply the `-Merge` switch.
 
 ### Example
 
 ```PowerShell
 # set a token and project
-$3loToken = 'YOUR 3LO FORGE TOKEN HERE';
+$3loToken = 'YOUR 3LO APS TOKEN HERE';
 $projectId = 'YOUR PROJECT GUID HERE';
 
 # the index specification
@@ -154,7 +154,7 @@ $json =
 }';
 
 # download the manifest, fields and properties for each indexed file, to merge add the -Merge switch
-& $PSScriptRoot\createDiffIndex.ps1 -ProjectId $projectId -SpecificationJson $json -ForgeToken $3loToken -DownloadAll;
+& $PSScriptRoot\createDiffIndex.ps1 -ProjectId $projectId -SpecificationJson $json -APSToken $3loToken -DownloadAll;
 ```
 
 
@@ -164,7 +164,7 @@ $json =
 | -------------------- | -------- | -------------------------------------------------------------------- |
 | `-ProjectId`         | `guid`   | A ACC/BIM 360 project GUID                                           |
 | `-SpecificationJson` | `string` | The JSON specification for the index                                 |
-| `-ForgeToken`        | `string` | A Forge OAuth 2.0 3LO token string                                   |
+| `-APSToken`        | `string` | A APS OAuth 2.0 3LO token string                                   |
 | `-DownloadAll`       | `switch` | Set to download all resources for index                              |
 
 ### Output
@@ -174,13 +174,13 @@ This script will write the response from the [diff index status get endpoint](ht
 ## runDiffQuery.ps1
 
 ### Description
-This script can be used to create an run diff queries against an existing index. This script imports the [ForgeCLI](../src) module and wraps the `New-BimPropertyDiffQuery` cmdlet. The `Get-BimPropertyDiffQuery` cmdlet is used to poll the index for progress. Finally the `Get-ResourceUrl` cmdlet is used to download the result JSON resource.
+This script can be used to create an run diff queries against an existing index. This script imports the [APSCLI](../src) module and wraps the `New-BimPropertyDiffQuery` cmdlet. The `Get-BimPropertyDiffQuery` cmdlet is used to poll the index for progress. Finally the `Get-ResourceUrl` cmdlet is used to download the result JSON resource.
 
 ### Example
 
 ```PowerShell
 # set a token, project and index ID to query
-$3loToken = 'YOUR 3LO FORGE TOKEN HERE';
+$3loToken = 'YOUR 3LO APS TOKEN HERE';
 $projectId = 'YOUR PROJECT GUID HERE';
 $indexId = 'THE INDEX ID TO TARGET';
 
@@ -192,7 +192,7 @@ $json =
     }
 }';
 
-& $PSScriptRoot\runDiffQuery.ps1 -ProjectId $projectId -IndexId $indexId -QueryJson $json -ForgeToken $3loToken;
+& $PSScriptRoot\runDiffQuery.ps1 -ProjectId $projectId -IndexId $indexId -QueryJson $json -APSToken $3loToken;
 ```
 
 
@@ -203,7 +203,7 @@ $json =
 | `-ProjectId`  | `guid`   | A ACC/BIM 360 project GUID            |
 | `-IndexId`    | `string` | An index ID to target with the query  |
 | `-QueryJson`  | `string` | The JSON query specification          |
-| `-ForgeToken` | `string` | A Forge OAuth 2.0 3LO token string    |
+| `-APSToken` | `string` | A APS OAuth 2.0 3LO token string    |
 
 ### Output
 

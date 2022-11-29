@@ -1,7 +1,7 @@
 # Documentation Index
 
 ## Description
-This is additional documents with Model Properties standard documents on Forge website. 
+This is additional documents with Model Properties standard documents on APS website. 
 
 ## Concepts and Examples
 
@@ -13,11 +13,11 @@ This is additional documents with Model Properties standard documents on Forge w
 
 ## Cmdlet Help
 
-All of the following cmdlets can be obtained by importing the [ForgeCLI.psd1](../src/ForgeCLI.pds1) script module.
+All of the following cmdlets can be obtained by importing the [APSCLI.psd1](../src/APSCLI.pds1) script module.
 
 [Utilities](./cmdlet/utils.md)
 
-[Forge Data Management](./cmdlet/data.md)
+[APS Data Management](./cmdlet/data.md)
 
 [Admin](./cmdlet/admin.md)
 

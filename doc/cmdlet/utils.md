@@ -2,53 +2,53 @@
 
 # Cmdlets
 
-[Get-ForgeEnvironment](#Get-ForgeEnvironment)
+[Get-APSEnvironment](#Get-APSEnvironment)
 
-[Set-ForgeEnvironment](#Set-ForgeEnvironment)
+[Set-APSEnvironment](#Set-APSEnvironment)
 
-[Set-ForgeToken](#Set-ForgeToken)
+[Set-APSToken](#Set-APSToken)
 
 [Get-ResourceUrl](#Get-ResourceUrl)
 
-# <a name="Get-ForgeEnvironment"></a>Get-ForgeEnvironment
+# <a name="Get-APSEnvironment"></a>Get-APSEnvironment
 
 ### Syntax
 
 ```PowerShell
-Get-ForgeEnvironment
+Get-APSEnvironment
 ```
 
 ### Description
 
-Get the current Forge API environment setting.
+Get the current APS API environment setting.
 
 ### Examples
 
 ```PowerShell
-PS > Get-ForgeEnvironment;
+PS > Get-APSEnvironment;
 ```
 
-# <a name="Set-ForgeEnvironment"></a>Set-ForgeEnvironment
+# <a name="Set-APSEnvironment"></a>Set-APSEnvironment
 
 ### Syntax
 
 ```PowerShell
-Set-ForgeEnvironment
+Set-APSEnvironment
     [-Environment <string>]
 ```
 
 ### Description
 
-Set the current Forge API environment.
+Set the current APS API environment.
 
 ### Examples
 
 ```PowerShell
-PS > Set-ForgeEnvironment -Environment Default;
+PS > Set-APSEnvironment -Environment Default;
 ```
 
 ```PowerShell
-PS > Set-ForgeEnvironment -Environment StagingUs;
+PS > Set-APSEnvironment -Environment StagingUs;
 ```
 
 ### Parameters
@@ -67,14 +67,14 @@ The Environment to use, permitted values `ProductionUs`, `StagingUs` and `Defaul
 
 ### Outputs
 
-None, use `Get-ForgeEnvironment` to read the current setting.
+None, use `Get-APSEnvironment` to read the current setting.
 
-# <a name="Set-ForgeToken"></a>Set-ForgeToken
+# <a name="Set-APSToken"></a>Set-APSToken
 
 ### Syntax
 
 ```PowerShell
-Set-ForgeToken
+Set-APSToken
     [-Token <string>]
 ```
 
@@ -85,7 +85,7 @@ Set the OAuth 2.0 authorization token to use.
 ### Examples
 
 ```PowerShell
-PS > Set-ForgeToken -Token 'agagetdjcasn8383djwxxxjfgshr...';
+PS > Set-APSToken -Token 'agagetdjcasn8383djwxxxjfgshr...';
 ```
 
 ### Parameters

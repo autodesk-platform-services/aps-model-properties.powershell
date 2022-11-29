@@ -19,14 +19,14 @@ This repository is comprised of the following top level folders.
 
  - [models](./models):  A set of sample RVT, DWG and IFC models which can be used with these samples, including two versions of same model (for testing diff properties)     
  - [scripts](./scripts): PowerShell demo scripts which can be used to build indexes and run queries
- - [src](./src) : A PowerShell script module providing cmdlets for building and querying indexes. Also including utility functions of Data Management API of Forge 
+ - [src](./src) : A PowerShell script module providing cmdlets for building and querying indexes. Also including utility functions of Data Management API of APS. 
  - [doc](./doc): Additional documentations and snippets detailing the features of the indexing service
 
 ### Demonstrations
 
 **In PowerShell Console**
 
-   [![https://youtu.be/7gmS6cUkLN4](https://img.youtube.com/vi/7gmS6cUkLN4/0.jpg)](https://youtu.be/7gmS6cUkLN4 "Forge Model Differences in PowerShell Console")
+   [![https://youtu.be/7gmS6cUkLN4](https://img.youtube.com/vi/7gmS6cUkLN4/0.jpg)](https://youtu.be/7gmS6cUkLN4 "APS Model Differences in PowerShell Console")
 
 
 **In VSCode**
@@ -49,16 +49,16 @@ This repository is comprised of the following top level folders.
 
 3. (Optional) **Visual Studio Code**: If you want to run the sample queries and scripts which use the PowerShell tools provided as part of this repo then it is useful to have a PowerShell capable IDE. Microsoft [Visual Studio Code](https://code.visualstudio.com/) is a great, free, cross-platform IDE with excellent PowerShell support. Microsoft also provides free [PowerShell Language Support for Visual Studio Code](https://github.com/PowerShell/vscode-powershell/blob/master/README.md) by way of an extension, available via the VSCode extension marketplace. Check out the [Using Visual Studio Code for PowerShell Development](https://docs.microsoft.com/en-us/powershell/scripting/dev-cross-plat/vscode/using-vscode?view=powershell-7.1) on MSDN for more information. All of the PowerShell code in this repo was developed using this extension!
 
-4. **Forge Account**: Learn how to create a Forge Account, activate subscription and create an app by [this tutorial](http://learnforge.autodesk.io/#/account/). Get _Forge client id_, _Forge client secret_ and _Forge callback url_ (to get 3-legged token).  
+4. **APS Account**: Learn how to create a APS Account, activate subscription and create an app by [APS Tutorials](https://aps.autodesk.com/tutorials/#/account/). Get _APS client id_, _APS client secret_ and _APS callback url_ (to get 3-legged token).  
  
 
-5. **ACC or BIM360 account and project**: Grant your Forge client access to your account This documentation assumes that you have developer access to an ACC or BIM 360 project which you can use for testing purposes. If you do not yet have access to such a project contact you Autodesk administrator. It must be Account Admin to add the app integration. [Learn about provisioning](https://forge.autodesk.com/blog/bim-360-docs-provisioning-forge-apps). Make a note with the **account id** and  **project id**.  
+5. **ACC or BIM360 account and project**: Grant your APS client access to your account This documentation assumes that you have developer access to an ACC or BIM 360 project which you can use for testing purposes. If you do not yet have access to such a project contact you Autodesk administrator. It must be Account Admin to add the app integration. [Learn about provisioning](https://forge.autodesk.com/blog/bim-360-docs-provisioning-forge-apps). Make a note with the **account id** and  **project id**.  
 
 ### Running Locally
 
 1.  Clone this sample project or download it. It's recommended to install [GitHub desktop](https://desktop.github.com/). To clone it via command line, use the following (**Terminal** on MacOSX/Linux, **Git Shell** on Windows):
 
-    ```git clone https://github.com/Autodesk-Forge/forge-model-properties.powershell```
+    ```git clone https://github.com/autodesk-platform-services/aps-model-properties.powershell```
 
     This repo ships with a set of sample models at [models](./models) folder which illustrate the features of the indexing service. Make sure you have support for [git large file storage](https://git-lfs.github.com/). To check if your command line git client has lfs support available try the following at the command line. 
 
@@ -79,7 +79,7 @@ This repository is comprised of the following top level folders.
 
       All of the example queries in this repository have been tested against the models in [models](./models) folder . You could also adapt the examples in this repository to your own data, however if you want to contribute samples to this project you will need to test these against the sample models. 
 
-3. Model Properties supports 3-legged token only. To get **3-legged token**, you could use web browser application such as [LearnForge ViewhubModel](https://learnforge.autodesk.io/#/tutorials/viewhubmodels), or utility such as [blazor web app](https://git.autodesk.com/whittld/WebAuth), or test tool such as Postman([one example](https://github.com/Autodesk-Forge/forge-autodesk.build.api-postman.collection/tree/main/Forms%20API)), or other scripts of utility. Make a note with the **3-legged token**
+3. Model Properties supports 3-legged token only. To get **3-legged token**, you could use web browser application such as [APS Tutorials](https://aps.autodesk.com/tutorials/viewhubmodels), or utility such as [blazor web app](https://git.autodesk.com/whittld/WebAuth), or test tool such as Postman([one example](https://github.com/autodesk-platform-services/aps-autodesk.build.api-postman.collection/tree/main/Forms%20API)), or other scripts of utility. Make a note with the **3-legged token**
 
 4. After the uploaded models have been proceessed in BIM360 or ACC, get **version urns** of some models. you could run [getUrns.ps1](scripts/getUrns.ps1) in [Demo Walkthough Scripts](scripts), or use other ways to get the model version urns.
 
@@ -101,7 +101,7 @@ This repository is comprised of the following top level folders.
     Example of Diff Properties
     <p align="center"><img src="./doc/img/diff.png" width="600" ></p> 
 
-    Check out [Scripts ReadMe](scripts/readme) for details. The scripts also uses cmdlets shipped as part of [ForgeCLI](./src/ForgeCLI.psd1). For full details of the cmdlets available in this script module see [README](./src/README.md) in the [src](./src).
+    Check out [Scripts ReadMe](scripts/readme) for details. The scripts also uses cmdlets shipped as part of [APSCLI](./src/APSCLI.psd1). For full details of the cmdlets available in this script module see [README](./src/README.md) in the [src](./src).
 
 
 ### Additional Tests
@@ -122,4 +122,4 @@ This sample is licensed under the terms of the [MIT License](http://opensource.o
 
 ## Written by
 -	[Don Whittle](https://www.linkedin.com/in/don-whittle-4869088), Model Coordination engineering team, Autodesk.
--	reviewed and edited by Xiaodong Liang [@coldwood](https://twitter.com/coldwood), [Forge Partner Development](http://forge.autodesk.com),Autodesk
+-	reviewed and edited by Xiaodong Liang [@coldwood](https://twitter.com/coldwood), [Developer Advocacy and Support](http://forge.autodesk.com),Autodesk

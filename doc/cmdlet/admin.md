@@ -2,4 +2,4 @@
 
 # Cmdlets
 
-The [ForgeCLI](../../src/ForgeCLI.psd1) module contains the following Admin API cmdlets. 
+The [APSCLI](../../src/APSCLI.psd1) module contains the following Admin API cmdlets. 

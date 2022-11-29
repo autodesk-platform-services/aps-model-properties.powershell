@@ -103,7 +103,7 @@ The index _tables_ created by the server are stored as line delimited JSON. Each
 
 ## Object/File Version Control Columns
   
-The following columns describe the object in terms of the file version it was extracted from and the SVF(2) IDs which would be required to find the model element in the Forge viewer. This includes columns which link back to the index manifest. For a full explanation of the structure of index manifests see the [Forge API model properties field guide](https://forge.autodesk.com/en/docs/acc/v1/overview/field-guide/model-properties/). 
+The following columns describe the object in terms of the file version it was extracted from and the SVF(2) IDs which would be required to find the model element in the APS viewer. This includes columns which link back to the index manifest. For a full explanation of the structure of index manifests see the [APS API model properties field guide](https://forge.autodesk.com/en/docs/acc/v1/overview/field-guide/model-properties/). 
 
 | Column         | Type     | Description                                                                |
 | -------------- | -------- | -------------------------------------------------------------------------- |
@@ -115,7 +115,7 @@ The following columns describe the object in terms of the file version it was ex
 
 ## Property Values
 
-The property values set on any given object in a model vary from element to element. The properties for an index row representing a model object are stored in a `"props:" <object>` child object on the JSON document row. Each JSON property on the `props` object is an index property field which is set of this object row in the model. If a value is not set for a model element it will not appear as a property on the `props` object. The properties on the `props` object are keys into the index field resource which always start with a `p` prefix. The fields resource allows you to translate between a `p*` field key and its corresponding description in terms of an SVF2 model property category, data type, name, and depending on the class of property, a unit of measure. A full explanation of the fields resource can be found in the [Forge API model properties field guide](https://forge.autodesk.com/en/docs/acc/v1/overview/field-guide/model-properties/).
+The property values set on any given object in a model vary from element to element. The properties for an index row representing a model object are stored in a `"props:" <object>` child object on the JSON document row. Each JSON property on the `props` object is an index property field which is set of this object row in the model. If a value is not set for a model element it will not appear as a property on the `props` object. The properties on the `props` object are keys into the index field resource which always start with a `p` prefix. The fields resource allows you to translate between a `p*` field key and its corresponding description in terms of an SVF2 model property category, data type, name, and depending on the class of property, a unit of measure. A full explanation of the fields resource can be found in the [APS API model properties field guide](https://forge.autodesk.com/en/docs/acc/v1/overview/field-guide/model-properties/).
 
 
 | Column         | Type     | Description                                                           |
@@ -135,11 +135,11 @@ A property value hash is computed for each row using the values from the set of 
 
 ### Viewable Objects
 
-Not every object row in an index table is viewable in a the Forge viewer. If an object row is _viewable_ then it will have a set of columns which characterise the geometry of the object. If the `s.views` array is null or empty then the object is NOT viewable. The `s.geomHash` is a hash of the mesh describing viewable objects. If this is the same between two consecutive versions of a object in two indexes then the object represented by the mesh as NOT changed shape or position in the model and the bounding boxes will also be expected to be equal.
+Not every object row in an index table is viewable in a the APS viewer. If an object row is _viewable_ then it will have a set of columns which characterise the geometry of the object. If the `s.views` array is null or empty then the object is NOT viewable. The `s.geomHash` is a hash of the mesh describing viewable objects. If this is the same between two consecutive versions of a object in two indexes then the object represented by the mesh as NOT changed shape or position in the model and the bounding boxes will also be expected to be equal.
 
 | Column       | Type       | Description                                                                                                    |
 | -------------| ---------- | -------------------------------------------------------------------------------------------------------------- |
-| `s.views`    | `string[]` | The manifest keys describing the SVF2 viewable manifest to load in the Forge viewer to display the object row  |
+| `s.views`    | `string[]` | The manifest keys describing the SVF2 viewable manifest to load in the APS viewer to display the object row  |
 | `s.geomHash` | `string`   | The SVF2 geometry hash for the mesh describing this object in the model                                        |
 | `s.bboxMin.x`| `double`   | The x value of the 3D coordinate of the minimum extent of the bounding box containing the mesh of this element |
 | `s.bboxMin.y`| `double`   | The y value of the 3D coordinate of the minimum extent of the bounding box containing the mesh of this element |
