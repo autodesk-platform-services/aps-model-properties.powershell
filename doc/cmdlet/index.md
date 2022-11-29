@@ -72,7 +72,7 @@ The JSON specification for the index.
 
 ### Outputs
 
-The index, see the [Model Properties Forge documentation](https://forge.autodesk.com/en/docs/acc/v1/reference/http/index-v2-index-merge-status-post/) for full details.
+The index, see the [Model Properties APS documentation](https://forge.autodesk.com/en/docs/acc/v1/reference/http/index-v2-index-merge-status-post/) for full details.
 
 # <a name="Get-BimPropertyIndex"></a>Get-BimPropertyIndex
 
@@ -124,7 +124,7 @@ The index to target.
 
 ### Outputs
 
-The index, see the [Model Properties Forge documentation](https://forge.autodesk.com/en/docs/acc/v1/reference/http/index-v2-index-status-get/) for full details.
+The index, see the [Model Properties APS documentation](https://forge.autodesk.com/en/docs/acc/v1/reference/http/index-v2-index-status-get/) for full details.
 
 # <a name="New-BimPropertyIndexQuery"></a>New-BimPropertyIndexQuery
 
@@ -194,7 +194,7 @@ The index query JSON to run.
 
 ### Outputs
 
-The index query, see the [Model Properties Forge documentation](https://forge.autodesk.com/en/docs/acc/v1/reference/http/index-v2-index-query-post/) for full details.
+The index query, see the [Model Properties APS documentation](https://forge.autodesk.com/en/docs/acc/v1/reference/http/index-v2-index-query-post/) for full details.
 
 # <a name="Get-BimPropertyIndexQuery"></a>Get-BimPropertyIndexQuery
 
@@ -258,4 +258,4 @@ The index query ID corresponding to the executed query.
 
 ### Outputs
 
-The index query, see the [Model Properties Forge documentation](https://forge.autodesk.com/en/docs/acc/v1/reference/http/index-v2-index-query-job-status-get/) for full details.
+The index query, see the [Model Properties APS documentation](https://forge.autodesk.com/en/docs/acc/v1/reference/http/index-v2-index-query-job-status-get/) for full details.

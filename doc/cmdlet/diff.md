@@ -125,7 +125,7 @@ The ID of the Diff to target.
 
 ### Outputs
 
-The diff index, see the [Model Properties Forge documentation](https://forge.autodesk.com/en/docs/acc/v1/reference/http/index-v2-diff-status-get/) for full details.
+The diff index, see the [Model Properties APS documentation](https://forge.autodesk.com/en/docs/acc/v1/reference/http/index-v2-diff-status-get/) for full details.
 
 # <a name="New-BimPropertyDiffQuery"></a>New-BimPropertyDiffQuery
 
@@ -198,7 +198,7 @@ The diff query JSON to run.
 
 ### Outputs
 
-The diff index query, see the [Model Properties Forge documentation](https://forge.autodesk.com/en/docs/acc/v1/reference/http/index-v2-diff-query-post/) for full details.
+The diff index query, see the [Model Properties APS documentation](https://forge.autodesk.com/en/docs/acc/v1/reference/http/index-v2-diff-query-post/) for full details.
 
 # <a name="Get-BimPropertyDiffQuery"></a>Get-BimPropertyDiffQuery
 

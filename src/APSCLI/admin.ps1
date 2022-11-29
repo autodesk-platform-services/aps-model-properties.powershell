@@ -5,7 +5,7 @@ function Get-AdminAccounts {
         'Accept-Encoding' = 'gzip, deflate, br'
     };
 
-    $url = "$ForgeApiBaseAddress/bim360/admin/v1/accounts";
+    $url = "$APSApiBaseAddress/bim360/admin/v1/accounts";
 
     Write-Verbose $url;
 
@@ -13,5 +13,5 @@ function Get-AdminAccounts {
                              -Method Get `
                              -Headers $headers `
                              -Authentication OAuth `
-                             -Token $ForgeOAuthToken;
+                             -Token $APSOAuthToken;
 }
