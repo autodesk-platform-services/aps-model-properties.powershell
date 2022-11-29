@@ -1,9 +1,9 @@
-function Get-ForgeEvironment
+function Get-APSEvironment
 {
-    return $ForgeApiBaseAddress;
+    return $APSApiBaseAddress;
 }
 
-function Set-ForgeEvironment {
+function Set-APSEvironment {
     param (
         [Parameter(Mandatory=$true, ValueFromPipeline=$false)]
         [ValidateSet('ProductionUs','StagingUs','Default')]
@@ -12,21 +12,21 @@ function Set-ForgeEvironment {
 
     switch ($Environment) {
         ProductionUs {
-            Set-Variable -Name ForgeApiBaseAddress -Value 'https://developer.api.autodesk.com' -Scope Script;
+            Set-Variable -Name APSApiBaseAddress -Value 'https://developer.api.autodesk.com' -Scope Script;
             Set-Variable -Name NucleusQaSuffix -Value '' -Scope Script;
         }
         StagingUs {
-            Set-Variable -Name ForgeApiBaseAddress -Value 'https://developer-stg.api.autodesk.com' -Scope Script;
+            Set-Variable -Name APSApiBaseAddress -Value 'https://developer-stg.api.autodesk.com' -Scope Script;
             Set-Variable -Name NucleusQaSuffix -Value '-dev' -Scope Script;
         }
         default {
-            Set-Variable -Name ForgeApiBaseAddress -Value 'https://developer.api.autodesk.com' -Scope Script;
+            Set-Variable -Name APSApiBaseAddress -Value 'https://developer.api.autodesk.com' -Scope Script;
             Set-Variable -Name NucleusQaSuffix -Value '' -Scope Script;
         }
     }
 }
 
-function Set-ForgeToken
+function Set-APSToken
 {
     param (
         [Parameter(Mandatory=$true, ValueFromPipeline=$false)]
@@ -35,7 +35,7 @@ function Set-ForgeToken
 
     $nt = ConvertTo-SecureString -String $Token -AsPlainText -Force;
 
-    Set-Variable -Name ForgeOAuthToken -Value $nt -Scope Script;
+    Set-Variable -Name APSOAuthToken -Value $nt -Scope Script;
 }
 
 function Get-ResourceUrl {
@@ -58,7 +58,7 @@ function Get-ResourceUrl {
             -Method Get `
             -Headers $headers `
             -Authentication OAuth `
-            -Token $ForgeOAuthToken `
+            -Token $APSOAuthToken `
             -OutFile $Path;
     }
     else
@@ -68,6 +68,6 @@ function Get-ResourceUrl {
             -Method Get `
             -Headers $headers `
             -Authentication OAuth `
-            -Token $ForgeOAuthToken;
+            -Token $APSOAuthToken;
     }    
 }

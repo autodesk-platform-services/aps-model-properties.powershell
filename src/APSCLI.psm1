@@ -1,6 +1,6 @@
-$forgeCli  = Get-ChildItem -Path $PSScriptRoot\ForgeCLI\*.ps1;
+$apsCli  = Get-ChildItem -Path $PSScriptRoot\APSCLI\*.ps1;
 
-foreach ($import in $forgeCli)
+foreach ($import in $apsCli)
 {
     try
     {
@@ -13,6 +13,6 @@ foreach ($import in $forgeCli)
 }
 
 # Script variables
-New-Variable -Name ForgeApiBaseAddress -Value 'https://developer.api.autodesk.com' -Scope Script;
+New-Variable -Name APSApiBaseAddress -Value 'https://developer.api.autodesk.com' -Scope Script;
 New-Variable -Name NucleusQaSuffix -Value '' -Scope Script;
-New-Variable -Name ForgeOAuthToken -Value $null -Scope Script;
+New-Variable -Name APSOAuthToken -Value $null -Scope Script;

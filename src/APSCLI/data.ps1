@@ -1,4 +1,4 @@
-function ConvertTo-ForgeDataFilter {
+function ConvertTo-APSDataFilter {
     param (
         [Parameter(Mandatory=$true, ValueFromPipeline=$true)]
         [hashtable] $Filters        
@@ -37,7 +37,7 @@ function ConvertTo-ForgeDataFilter {
     };
 }
 
-function Get-ForgeHubs {
+function Get-APSHubs {
     param (        
         [Parameter(Mandatory=$false, ValueFromPipeline=$false)]
         [hashtable] $Filter       
@@ -51,12 +51,12 @@ function Get-ForgeHubs {
     $urlPostfix = '';
 
     if ($null -ne $Filter) {
-        $f = ConvertTo-ForgeDataFilter -Filters $Filter;
+        $f = ConvertTo-APSDataFilter -Filters $Filter;
         Write-Verbose $f;
         $urlPostfix = '?' + $f.Encoded;
     }
 
-    $url = "$ForgeApiBaseAddress/project/v1/hubs$urlPostfix";
+    $url = "$APSApiBaseAddress/project/v1/hubs$urlPostfix";
 
     Write-Verbose $url;
 
@@ -64,10 +64,10 @@ function Get-ForgeHubs {
                              -Method Get `
                              -Headers $headers `
                              -Authentication OAuth `
-                             -Token $ForgeOAuthToken;
+                             -Token $APSOAuthToken;
 }
 
-function Get-ForgeHub {
+function Get-APSHub {
     param ( 
         [Parameter(Mandatory=$true, ValueFromPipeline=$true)]
         [string] $HubId      
@@ -78,7 +78,7 @@ function Get-ForgeHub {
         'Accept-Encoding' = 'gzip, deflate, br'
     };
 
-    $url = "$ForgeApiBaseAddress/project/v1/hubs/$HubId";
+    $url = "$APSApiBaseAddress/project/v1/hubs/$HubId";
 
     Write-Verbose $url;
 
@@ -86,10 +86,10 @@ function Get-ForgeHub {
                              -Method Get `
                              -Headers $headers `
                              -Authentication OAuth `
-                             -Token $ForgeOAuthToken;
+                             -Token $APSOAuthToken;
 }
 
-function Get-ForgeProjects {
+function Get-APSProjects {
     param ( 
         [Parameter(Mandatory=$true, ValueFromPipeline=$true)]
         [string] $HubId,  
@@ -105,12 +105,12 @@ function Get-ForgeProjects {
     $urlPostfix = '';
 
     if ($null -ne $Filter) {
-        $f = ConvertTo-ForgeDataFilter -Filters $Filter;
+        $f = ConvertTo-APSDataFilter -Filters $Filter;
         Write-Verbose $f;
         $urlPostfix = '?' + $f.Encoded;
     }
 
-    $url = "$ForgeApiBaseAddress/project/v1/hubs/$HubId/projects$urlPostfix";
+    $url = "$APSApiBaseAddress/project/v1/hubs/$HubId/projects$urlPostfix";
 
     Write-Verbose $url;
 
@@ -118,10 +118,10 @@ function Get-ForgeProjects {
                              -Method Get `
                              -Headers $headers `
                              -Authentication OAuth `
-                             -Token $ForgeOAuthToken;
+                             -Token $APSOAuthToken;
 }
 
-function Get-ForgeProject {
+function Get-APSProject {
     param ( 
         [Parameter(Mandatory=$true, ValueFromPipeline=$false)]
         [string] $HubId,  
@@ -134,7 +134,7 @@ function Get-ForgeProject {
         'Accept-Encoding' = 'gzip, deflate, br'
     };
 
-    $url = "$ForgeApiBaseAddress/project/v1/hubs/$HubId/projects/$ProjectId";
+    $url = "$APSApiBaseAddress/project/v1/hubs/$HubId/projects/$ProjectId";
 
     Write-Verbose $url;
 
@@ -142,10 +142,10 @@ function Get-ForgeProject {
                              -Method Get `
                              -Headers $headers `
                              -Authentication OAuth `
-                             -Token $ForgeOAuthToken;
+                             -Token $APSOAuthToken;
 }
 
-function Get-ForgeProjectTopFolders {
+function Get-APSProjectTopFolders {
     param ( 
         [Parameter(Mandatory=$true, ValueFromPipeline=$false)]
         [string] $HubId,  
@@ -158,7 +158,7 @@ function Get-ForgeProjectTopFolders {
         'Accept-Encoding' = 'gzip, deflate, br'
     };
 
-    $url = "$ForgeApiBaseAddress/project/v1/hubs/$HubId/projects/$ProjectId/topFolders";
+    $url = "$APSApiBaseAddress/project/v1/hubs/$HubId/projects/$ProjectId/topFolders";
 
     Write-Verbose $url;
 
@@ -166,10 +166,10 @@ function Get-ForgeProjectTopFolders {
                              -Method Get `
                              -Headers $headers `
                              -Authentication OAuth `
-                             -Token $ForgeOAuthToken;
+                             -Token $APSOAuthToken;
 }
 
-function Get-ForgeFolderContents {
+function Get-APSFolderContents {
     param ( 
         [Parameter(Mandatory=$true, ValueFromPipeline=$false)]
         [string] $ProjectId,  
@@ -187,12 +187,12 @@ function Get-ForgeFolderContents {
     $urlPostfix = '';
 
     if ($null -ne $Filter) {
-        $f = ConvertTo-ForgeDataFilter -Filters $Filter;
+        $f = ConvertTo-APSDataFilter -Filters $Filter;
         Write-Verbose $f;
         $urlPostfix = '?' + $f.Encoded;
     }
 
-    $url = "$ForgeApiBaseAddress/data/v1/projects/$ProjectId/folders/$FolderUrn/contents$urlPostfix";
+    $url = "$APSApiBaseAddress/data/v1/projects/$ProjectId/folders/$FolderUrn/contents$urlPostfix";
 
     Write-Verbose $url;
 
@@ -200,10 +200,10 @@ function Get-ForgeFolderContents {
                              -Method Get `
                              -Headers $headers `
                              -Authentication OAuth `
-                             -Token $ForgeOAuthToken;
+                             -Token $APSOAuthToken;
 }
 
-function Search-ForgeFolder {
+function Search-APSFolder {
     param ( 
         [Parameter(Mandatory=$true, ValueFromPipeline=$false)]
         [string] $ProjectId,  
@@ -221,12 +221,12 @@ function Search-ForgeFolder {
     $urlPostfix = '';
 
     if ($null -ne $Filter) {
-        $f = ConvertTo-ForgeDataFilter -Filters $Filter;
+        $f = ConvertTo-APSDataFilter -Filters $Filter;
         Write-Verbose $f;
         $urlPostfix = '?' + $f.Encoded;
     }
 
-    $url = "$ForgeApiBaseAddress/data/v1/projects/$ProjectId/folders/$FolderUrn/search$urlPostfix";
+    $url = "$APSApiBaseAddress/data/v1/projects/$ProjectId/folders/$FolderUrn/search$urlPostfix";
 
     Write-Verbose $url;
 
@@ -234,10 +234,10 @@ function Search-ForgeFolder {
                              -Method Get `
                              -Headers $headers `
                              -Authentication OAuth `
-                             -Token $ForgeOAuthToken;
+                             -Token $APSOAuthToken;
 }
 
-function Get-ForgeFolderByPath {
+function Get-APSFolderByPath {
     param (
         [Parameter(Mandatory=$true, ValueFromPipeline=$false)]
         [string] $HubId,  
@@ -259,7 +259,7 @@ function Get-ForgeFolderByPath {
     {
         if ($i -eq 0)
         {        
-            $topFolders = Get-ForgeProjectTopFolders `
+            $topFolders = Get-APSProjectTopFolders `
                 -HubId $HubId `
                 -ProjectId $ProjectId;
 
@@ -280,7 +280,7 @@ function Get-ForgeFolderByPath {
                 'extension.type' = 'folders:autodesk.bim360:Folder'
             }
                         
-            $contents = Get-ForgeFolderContents `
+            $contents = Get-APSFolderContents `
                 -ProjectId $ProjectId `
                 -FolderUrn $currentFolder.id `
                 -Filter $filter;
@@ -297,7 +297,7 @@ function Get-ForgeFolderByPath {
     return $currentFolder;
 }
 
-function Get-ForgeItemByPath {
+function Get-APSItemByPath {
     param (
         [Parameter(Mandatory=$true, ValueFromPipeline=$false)]
         [string] $HubId,  
@@ -317,7 +317,7 @@ function Get-ForgeItemByPath {
 
     Write-Verbose "Find item $itemName in $folderPath";
 
-    $folder = Get-ForgeFolderByPath `
+    $folder = Get-APSFolderByPath `
         -HubId $HubId `
         -ProjectId $ProjectId `
         -Path $folderPath;
@@ -327,7 +327,7 @@ function Get-ForgeItemByPath {
         'extension.type' = 'items:autodesk.bim360:File'
     }
                 
-    $contents = Get-ForgeFolderContents `
+    $contents = Get-APSFolderContents `
         -ProjectId $ProjectId `
         -FolderUrn $folder.id `
         -Filter $filter;

@@ -12,7 +12,7 @@ function New-BimPropertyIndex {
         'Accept-Encoding' = 'gzip, deflate, br'
     };
 
-    $url = "$ForgeApiBaseAddress/construction/index$NucleusQaSuffix/v2/projects/$ProjectId/indexes:batch-status";
+    $url = "$APSApiBaseAddress/construction/index$NucleusQaSuffix/v2/projects/$ProjectId/indexes:batch-status";
 
     Write-Verbose "POST $url";
 
@@ -21,7 +21,7 @@ function New-BimPropertyIndex {
                              -Body $SpecificationJson `
                              -Headers $headers `
                              -Authentication OAuth `
-                             -Token $ForgeOAuthToken;
+                             -Token $APSOAuthToken;
 }
 
 function Get-BimPropertyIndex {
@@ -37,7 +37,7 @@ function Get-BimPropertyIndex {
         'Accept-Encoding' = 'gzip, deflate, br'
     };
 
-    $url = "$ForgeApiBaseAddress/construction/index$NucleusQaSuffix/v2/projects/$ProjectId/indexes/$IndexId";
+    $url = "$APSApiBaseAddress/construction/index$NucleusQaSuffix/v2/projects/$ProjectId/indexes/$IndexId";
 
     Write-Verbose "GET $url";
 
@@ -45,7 +45,7 @@ function Get-BimPropertyIndex {
                              -Method Get `
                              -Headers $headers `
                              -Authentication OAuth `
-                             -Token $ForgeOAuthToken;
+                             -Token $APSOAuthToken;
 }
 
 function New-BimPropertyIndexQuery {
@@ -64,7 +64,7 @@ function New-BimPropertyIndexQuery {
         'Accept-Encoding' = 'gzip, deflate, br'
     };
 
-    $url = "$ForgeApiBaseAddress/construction/index$NucleusQaSuffix/v2/projects/$ProjectId/indexes/$IndexId/queries";
+    $url = "$APSApiBaseAddress/construction/index$NucleusQaSuffix/v2/projects/$ProjectId/indexes/$IndexId/queries";
 
     Write-Verbose "POST $url";
 
@@ -73,7 +73,7 @@ function New-BimPropertyIndexQuery {
                              -Body $QueryJson `
                              -Headers $headers `
                              -Authentication OAuth `
-                             -Token $ForgeOAuthToken;
+                             -Token $APSOAuthToken;
 }
 
 function Get-BimPropertyIndexQuery {
@@ -91,7 +91,7 @@ function Get-BimPropertyIndexQuery {
         'Accept-Encoding' = 'gzip, deflate, br'
     };
 
-    $url = "$ForgeApiBaseAddress/construction/index$NucleusQaSuffix/v2/projects/$ProjectId/indexes/$IndexId/queries/$QueryId";
+    $url = "$APSApiBaseAddress/construction/index$NucleusQaSuffix/v2/projects/$ProjectId/indexes/$IndexId/queries/$QueryId";
 
     Write-Verbose "GET $url";
 
@@ -99,5 +99,5 @@ function Get-BimPropertyIndexQuery {
                              -Method Get `
                              -Headers $headers `
                              -Authentication OAuth `
-                             -Token $ForgeOAuthToken;
+                             -Token $APSOAuthToken;
 }

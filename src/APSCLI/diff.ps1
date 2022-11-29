@@ -12,7 +12,7 @@ function New-BimPropertyDiff {
         'Accept-Encoding' = 'gzip, deflate, br'
     };
 
-    $url = "$ForgeApiBaseAddress/construction/index$NucleusQaSuffix/v2/projects/$ProjectId/diffs:batch-status";
+    $url = "$APSApiBaseAddress/construction/index$NucleusQaSuffix/v2/projects/$ProjectId/diffs:batch-status";
 
     Write-Verbose "POST $url";
 
@@ -21,7 +21,7 @@ function New-BimPropertyDiff {
                              -Body $SpecificationJson `
                              -Headers $headers `
                              -Authentication OAuth `
-                             -Token $ForgeOAuthToken;
+                             -Token $APSOAuthToken;
 }
 
 function Get-BimPropertyDiff {
@@ -37,7 +37,7 @@ function Get-BimPropertyDiff {
         'Accept-Encoding' = 'gzip, deflate, br'
     };
 
-    $url = "$ForgeApiBaseAddress/construction/index$NucleusQaSuffix/v2/projects/$ProjectId/diffs/$DiffId";
+    $url = "$APSApiBaseAddress/construction/index$NucleusQaSuffix/v2/projects/$ProjectId/diffs/$DiffId";
 
     Write-Verbose "GET $url";
 
@@ -45,7 +45,7 @@ function Get-BimPropertyDiff {
                              -Method Get `
                              -Headers $headers `
                              -Authentication OAuth `
-                             -Token $ForgeOAuthToken;
+                             -Token $APSOAuthToken;
 }
 
 function New-BimPropertyDiffQuery {
@@ -64,7 +64,7 @@ function New-BimPropertyDiffQuery {
         'Accept-Encoding' = 'gzip, deflate, br'
     };
 
-    $url = "$ForgeApiBaseAddress/construction/index$NucleusQaSuffix/v2/projects/$ProjectId/diffs/$DiffId/queries";
+    $url = "$APSApiBaseAddress/construction/index$NucleusQaSuffix/v2/projects/$ProjectId/diffs/$DiffId/queries";
 
     Write-Verbose "POST $url";
 
@@ -73,7 +73,7 @@ function New-BimPropertyDiffQuery {
                              -Body $QueryJson `
                              -Headers $headers `
                              -Authentication OAuth `
-                             -Token $ForgeOAuthToken;
+                             -Token $APSOAuthToken;
 }
 
 function Get-BimPropertyDiffQuery {
@@ -91,7 +91,7 @@ function Get-BimPropertyDiffQuery {
         'Accept-Encoding' = 'gzip, deflate, br'
     };
 
-    $url = "$ForgeApiBaseAddress/construction/index$NucleusQaSuffix/v2/projects/$ProjectId/diffs/$DiffId/queries/$QueryId";
+    $url = "$APSApiBaseAddress/construction/index$NucleusQaSuffix/v2/projects/$ProjectId/diffs/$DiffId/queries/$QueryId";
 
     Write-Verbose "GET $url";
 
@@ -99,5 +99,5 @@ function Get-BimPropertyDiffQuery {
                              -Method Get `
                              -Headers $headers `
                              -Authentication OAuth `
-                             -Token $ForgeOAuthToken;
+                             -Token $APSOAuthToken;
 }
