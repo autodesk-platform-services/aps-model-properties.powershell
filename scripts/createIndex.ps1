@@ -12,18 +12,18 @@ param
     # The JSON index specification
     [Parameter(Mandatory=$true, ValueFromPipeline=$false)]
     [string] $SpecificationJson,   
-    # Forge auth token.
+    # APS auth token.
     [Parameter(Mandatory=$true, ValueFromPipeline=$false)]
-    [string] $ForgeToken,
+    [string] $APSToken,
     # set to download all resources
     [Parameter(Mandatory=$false, ValueFromPipeline=$false)]
     [switch] $DownloadAll
 )
 
 #############################################################
-# Forge CLI module import
+# APS CLI module import
 #############################################################
-$modulePath = Join-Path $PSScriptRoot '..\src\ForgeCLI.psd1' -Resolve;
+$modulePath = Join-Path $PSScriptRoot '..\src\APSCLI.psd1' -Resolve;
 Import-Module $modulePath;
 
 #############################################################
@@ -38,7 +38,7 @@ $outDir = "$PSScriptRoot\out";
 
 try {
     # create the token
-    Set-ForgeToken -Token $ForgeToken;
+    Set-APSToken -Token $APSToken;
 
     Write-Verbose "Create index $SpecificationJson";
 
